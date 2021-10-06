@@ -46,7 +46,7 @@ using namespace XrdPfc;
 Cache * Cache::m_instance = 0;
 
 XrdScheduler *Cache::schedP = 0;
-
+int ct = 0;
 
 void *ResourceMonitorHeartBeatThread(void*)
 {
@@ -651,6 +651,8 @@ void Cache::dec_ref_cnt(File* f, bool high_debug)
                                  as->BytesHit, as->BytesMissed, as->BytesBypassed, st.m_NCksumErrors
             );
             bool suc = false;
+            ct++;
+            cout << "GSTREAM" << ct << endl;
             if (len < 4096)
             {
                suc = m_gstream->Insert(buf, len + 1);
