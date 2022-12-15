@@ -576,6 +576,7 @@ int XrdConfig::Configure(int argc, char **argv)
    const char *ipAddrName;
    if (envName) {
       myName = envName;
+      Log.Emsg("Config","Using host name from XRDHOST env var");
    } else if ((ipAddrName = myIPAddr->Name(0, &temp))) {
       myName = ipAddrName;
    } else {
